@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import {
   decrement,
   increment,
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+} from './counterSlice'
+import styles from './Counter.module.css'
+import { fetchList } from 'features/cameras/camerasSlice'
 
 export function Counter() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const count = useSelector(selectCount)
+  const dispatch = useDispatch()
+  const [incrementAmount, setIncrementAmount] = useState('2')
 
   return (
     <div>
@@ -20,7 +21,10 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          onClick={() => {
+            dispatch(increment())
+            // dispatch(fetchList())
+          }}
         >
           +
         </button>
@@ -38,7 +42,7 @@ export function Counter() {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={e => setIncrementAmount(e.target.value)}
+          onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
           className={styles.button}
@@ -54,7 +58,8 @@ export function Counter() {
         >
           Add Async
         </button>
+        <button onClick={() => dispatch(fetchList())}>make request</button>
       </div>
     </div>
-  );
+  )
 }
