@@ -7,7 +7,7 @@ const Page = styled.div`
   display: grid;
   grid-template-areas: 'left polls';
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(max-content, 450px);
+  grid-template-columns: 1fr 450px;
 `
 
 const LeftBlock = styled.div`

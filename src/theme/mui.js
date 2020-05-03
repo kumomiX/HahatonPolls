@@ -50,10 +50,9 @@ const MuiTheme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
+      root: { borderRadius: 15, textTransform: 'none' },
       contained: {
         boxShadow: 'none !important',
-        borderRadius: 15,
-        textTransform: 'none',
       },
     },
     MuiTypography: {
@@ -61,8 +60,18 @@ const MuiTheme = createMuiTheme({
     },
     MuiBackdrop: {
       root: {
-        backgroundColor: theme.palette.primary.darker + 55,
-        backdropFilter: 'blur(20px)',
+        backgroundColor: theme.palette.primary.darker + 11,
+        backdropFilter: 'blur(10px)',
+      },
+    },
+    MuiDrawer: {
+      paper: {
+        boxShadow: theme.shadows.strong,
+      },
+    },
+    MuiChip: {
+      root: {
+        borderRadius: 12,
       },
     },
     MuiList: {

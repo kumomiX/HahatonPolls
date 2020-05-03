@@ -5,7 +5,8 @@ import HomePage from 'pages/Home'
 function App() {
   return (
     <Switch>
-      <Route path="/" component={HomePage}></Route>
+      <Route component={HomePage} path="/poll/:poll" />
+      <Route component={HomePage} path="/" />
     </Switch>
   )
 }

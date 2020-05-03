@@ -1,17 +1,8 @@
 import React, { useCallback } from 'react'
 import Select from 'react-select/async'
-import { Typography, Button } from '@material-ui/core'
-import styled, { useTheme } from 'styled-components'
-import blur from 'theme/blur'
+import { useTheme } from 'styled-components'
 import { searchAddresses, selectAddresses } from './addressesSlice'
 import { useDispatch, useSelector } from 'react-redux'
-
-// const promiseOptions = (inputValue) =>
-//   new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve()
-//     }, 1000)
-//   })
 
 const customStyles = {
   control: (styles, state) => {
@@ -46,19 +37,6 @@ const customStyles = {
   input: (styles) => ({ ...styles }),
   placeholder: (styles) => ({ ...styles }),
   singleValue: (styles, { data }) => ({ ...styles }),
-
-  // multiValue: (styles, { theme }) => {
-  //   return {
-  //     ...styles,
-  //     backgroundColor: theme?.styledTheme?.palette?.background.grey,
-  //     // color: theme?.styledTheme?.palette?.primary.contrastText,
-  //   }
-  // },
-  // multiValueLabel: (styles, { theme }) => ({
-  //   ...styles,
-  //   // color: theme?.styledTheme?.palette?.primary.contrastText,
-  //   fontWeight: 500,
-  // }),
 }
 
 const mapAddresses = (addresses) =>

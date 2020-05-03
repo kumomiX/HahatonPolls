@@ -1,12 +1,12 @@
 import React from 'react'
 import PollsList from './PollsList'
+import { useSelector } from 'react-redux'
 
-const PlannedPolls = () => {
-  const polls = null
-  return (
-    polls &&
-    polls.length > 0 && <PollsList title="Завершенные опросы"></PollsList>
-  )
+const Archived = () => {
+  const polls = useSelector(({ polls }) => polls.archivedList)
+  return polls && polls.length > 0 ? (
+    <PollsList polls={polls} title="Завершенные опросы"></PollsList>
+  ) : null
 }
 
-export default PlannedPolls
+export default Archived

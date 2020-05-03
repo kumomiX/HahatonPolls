@@ -1,0 +1,32 @@
+[
+  {
+    "id": "javascript",
+    "label": "javascript",
+    "value": 390,
+    "color": "hsl(137, 70%, 50%)"
+  },
+  {
+    "id": "elixir",
+    "label": "elixir",
+    "value": 464,
+    "color": "hsl(270, 70%, 50%)"
+  },
+  {
+    "id": "c",
+    "label": "c",
+    "value": 483,
+    "color": "hsl(298, 70%, 50%)"
+  },
+  {
+    "id": "rust",
+    "label": "rust",
+    "value": 158,
+    "color": "hsl(191, 70%, 50%)"
+  },
+  {
+    "id": "css",
+    "label": "css",
+    "value": 435,
+    "color": "hsl(220, 70%, 50%)"
+  }
+]

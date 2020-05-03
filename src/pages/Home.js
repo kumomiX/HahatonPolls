@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Drawer } from '@material-ui/core'
 import HomeTemplate from 'templates/Home'
 import Map from 'features/map/Map'
-import PollsList from 'features/polls/PollsList'
-import Search from 'features/search'
+
 import PlannedPolls from 'features/polls/PlannedPolls'
 import ArchivedPolls from 'features/polls/ArchivedPolls'
 import NewPollForm from 'features/polls/NewPollForm'
+import PollDrawer from 'features/polls/PollDrawer'
 
 const HomePage = () => {
   return (
@@ -33,6 +33,7 @@ const HomePage = () => {
     >
       <PlannedPolls />
       <ArchivedPolls />
+      <PollDrawer />
     </HomeTemplate>
   )
 }
