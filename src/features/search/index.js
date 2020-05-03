@@ -40,10 +40,25 @@ const customStyles = {
     boxShadow: state?.theme?.styledTheme?.shadows.main,
     fontFamily: state?.theme?.styledTheme?.fonts.primary,
     background: state?.theme?.styledTheme?.palette?.background.primary,
+    overflow: 'hidden',
+    zIndex: 10,
   }),
   input: (styles) => ({ ...styles }),
   placeholder: (styles) => ({ ...styles }),
   singleValue: (styles, { data }) => ({ ...styles }),
+
+  // multiValue: (styles, { theme }) => {
+  //   return {
+  //     ...styles,
+  //     backgroundColor: theme?.styledTheme?.palette?.background.grey,
+  //     // color: theme?.styledTheme?.palette?.primary.contrastText,
+  //   }
+  // },
+  // multiValueLabel: (styles, { theme }) => ({
+  //   ...styles,
+  //   // color: theme?.styledTheme?.palette?.primary.contrastText,
+  //   fontWeight: 500,
+  // }),
 }
 
 const mapAddresses = (addresses) =>

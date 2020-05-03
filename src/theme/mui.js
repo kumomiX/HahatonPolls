@@ -90,7 +90,7 @@ const MuiTheme = createMuiTheme({
     },
     MuiFilledInput: {
       root: {
-        borderRadius: '12px !important',
+        borderRadius: '15px !important',
         background: 'transparent !important',
         border: `${theme.palette.background.lightgrey} 2px solid`,
         // '&$focused': {

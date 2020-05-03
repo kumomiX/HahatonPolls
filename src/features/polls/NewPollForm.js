@@ -1,14 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import {
-  Typography,
-  Button,
-  Collapse,
-  TextField,
-  FormLabel,
-} from '@material-ui/core'
+import { Typography, Button, Collapse, TextField } from '@material-ui/core'
+import { useDispatch, useSelector } from 'react-redux'
 import Search from 'features/search'
 import useInput from 'hooks/useInput'
+import { createPoll } from './pollsSlice'
+import { unwrapResult } from '@reduxjs/toolkit'
 
 const Form = styled.form`
   background: ${(p) => p.theme.palette.background.primary};
@@ -35,16 +32,57 @@ const Wrapper = styled.div`
   margin-top: 0.325rem;
   gap: 0.325rem;
   grid-auto-flow: column;
-  grid-template-columns: 1fr calc(400px + 0.325rem);
+  grid-template-columns: 1fr calc(420px + 0.325rem);
   margin-bottom: 1rem;
 `
 
 const NewPollForm = (props) => {
+  const dispatch = useDispatch()
   const [isNew, setIsNew] = useState(false)
-  const { value: startDate, bind: bindStartDate } = useInput('2017-05-24T10:30')
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault()
-  }, [])
+
+  const selectedAddresses = useSelector(({ addresses }) => addresses.selected)
+  const {
+    value: startDate,
+    bind: bindStartDate,
+    reset: resetStartDate,
+  } = useInput('2017-05-24T10:30')
+  const { value: endDate, bind: bindEndDate, reset: resetEndDate } = useInput(
+    '2017-05-24T10:30',
+  )
+  const {
+    value: pollText,
+    bind: bindPollText,
+    reset: resetPollText,
+  } = useInput('')
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault()
+
+      const addresses = selectedAddresses.map((a) => a.uuid)
+
+      dispatch(createPoll({ addresses, startDate, endDate, text: pollText }))
+        .then(unwrapResult)
+        .then((ret) => {
+          resetStartDate()
+          resetEndDate()
+          resetPollText()
+          setIsNew(!isNew)
+        })
+    },
+    [
+      dispatch,
+      endDate,
+      isNew,
+      pollText,
+      resetEndDate,
+      resetPollText,
+      resetStartDate,
+      selectedAddresses,
+      startDate,
+    ],
+  )
+
   return (
     <Form onSubmit={handleSubmit} {...props}>
       <Typography variant="h4" gutterBottom color="primary">
@@ -55,7 +93,7 @@ const NewPollForm = (props) => {
       <Collapse in={isNew}>
         <Wrapper>
           <div>
-            <Typography style={{ marginLeft: '.625rem' }} color="textSecondary">
+            <Typography style={{ visibility: 'hidden' }} color="textSecondary">
               Опрос
             </Typography>
 
@@ -64,10 +102,7 @@ const NewPollForm = (props) => {
               name="body"
               multiline
               fullWidth
-              // onChange={(e) => {
-              //   setBodyCursor(e.target.selectionStart)
-              //   handleChange(e)
-              // }}
+              {...bindPollText}
             />
           </div>
           <div>
@@ -77,11 +112,10 @@ const NewPollForm = (props) => {
             <TextField
               label="C"
               type="datetime-local"
-              // defaultValue="2017-05-24T10:30"
               InputLabelProps={{
                 shrink: true,
               }}
-              style={{ margin: 0, width: '200px', marginRight: '.325rem' }}
+              style={{ margin: 0, width: '210px', marginRight: '.325rem' }}
               {...bindStartDate}
             />
             <TextField
@@ -90,7 +124,8 @@ const NewPollForm = (props) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              style={{ margin: 0, width: '200px' }}
+              style={{ margin: 0, width: '210px' }}
+              {...bindEndDate}
             />
             <Typography color="textSecondary">
               Опрос будет производиться в указанные промежутки времени, пока не
@@ -104,7 +139,6 @@ const NewPollForm = (props) => {
         <Button
           onClick={() => setIsNew(!isNew)}
           color={isNew ? 'default' : 'secondary'}
-          type={!isNew && 'submit'}
         >
           {isNew ? 'Отмена' : 'Новый опрос'}
         </Button>

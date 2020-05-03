@@ -34,7 +34,7 @@ const Polls = ({ title, ...props }) => {
             ></img>
             <Typography variant="h6">Тут пока ничего нет</Typography>
             <Typography color="textSecondary">
-              Начните новый опрос в форме слева.
+              Запланируйте новый опрос в форме слева.
             </Typography>
           </>
         )
