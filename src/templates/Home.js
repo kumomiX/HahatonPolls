@@ -8,6 +8,7 @@ const Page = styled.div`
   grid-template-areas: 'left polls';
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 450px;
+  overflow: hidden;
 `
 
 const LeftBlock = styled.div`
@@ -25,7 +26,7 @@ const LeftBlock = styled.div`
 const HomeTemplate = ({ left, children }) => (
   <Page>
     <LeftBlock>{left}</LeftBlock>
-    <div style={{ gridArea: 'polls' }}>{children}</div>
+    <div style={{ gridArea: 'polls', overflowY: 'auto' }}>{children}</div>
   </Page>
 )
 
