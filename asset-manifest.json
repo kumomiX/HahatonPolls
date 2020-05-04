@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/polls/static/css/main.68bc3c38.chunk.css",
+    "main.js": "/polls/static/js/main.7176536a.chunk.js",
+    "main.js.map": "/polls/static/js/main.7176536a.chunk.js.map",
+    "runtime-main.js": "/polls/static/js/runtime-main.0debbc82.js",
+    "runtime-main.js.map": "/polls/static/js/runtime-main.0debbc82.js.map",
+    "static/css/2.b4a16772.chunk.css": "/polls/static/css/2.b4a16772.chunk.css",
+    "static/js/2.8d79308a.chunk.js": "/polls/static/js/2.8d79308a.chunk.js",
+    "static/js/2.8d79308a.chunk.js.map": "/polls/static/js/2.8d79308a.chunk.js.map",
+    "index.html": "/polls/index.html",
+    "precache-manifest.91bab22227cc9a07dc2248ee247e41e3.js": "/polls/precache-manifest.91bab22227cc9a07dc2248ee247e41e3.js",
+    "service-worker.js": "/polls/service-worker.js",
+    "static/css/2.b4a16772.chunk.css.map": "/polls/static/css/2.b4a16772.chunk.css.map",
+    "static/css/main.68bc3c38.chunk.css.map": "/polls/static/css/main.68bc3c38.chunk.css.map",
+    "static/js/2.8d79308a.chunk.js.LICENSE.txt": "/polls/static/js/2.8d79308a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/polls/static/media/FuturaPT-Medium.995c64e1.woff",
+    "static/media/empty.png": "/polls/static/media/empty.805c606f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0debbc82.js",
+    "static/css/2.b4a16772.chunk.css",
+    "static/js/2.8d79308a.chunk.js",
+    "static/css/main.68bc3c38.chunk.css",
+    "static/js/main.7176536a.chunk.js"
+  ]
+}
