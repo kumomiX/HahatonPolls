@@ -1,3 +1,3 @@
 export default {
-  baseUri: '',
+  baseUri: 'http://polls.virushack.dns.army/public/api/v1',
 }

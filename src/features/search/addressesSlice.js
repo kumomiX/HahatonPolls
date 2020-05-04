@@ -6,7 +6,7 @@ export const searchAddresses = createAsyncThunk(
   'addresses/searchAddresses',
   async (q, { rejectWithValue, dispatch }) => {
     try {
-      const response = await API.request('/addresses', { dispatch })
+      const response = await API.request(`/addresses?q=${q}`, { dispatch })
       return response.data
     } catch {
       return rejectWithValue()

@@ -32,6 +32,34 @@ export const fetchCurrentPoll = createAsyncThunk(
   },
 )
 
+export const fetchArchivedPolls = createAsyncThunk(
+  'polls/fetchArchivedPolls',
+  async ({ uuid }, { rejectWithValue, dispatch }) => {
+    try {
+      const poll = await API.request('/polls', {
+        dispatch,
+      })
+      return { poll }
+    } catch {
+      return rejectWithValue()
+    }
+  },
+)
+
+export const fetchPlannedPolls = createAsyncThunk(
+  'polls/fetchPlannedPolls',
+  async ({ uuid }, { rejectWithValue, dispatch }) => {
+    try {
+      const poll = await API.request('/polls', {
+        dispatch,
+      })
+      return { poll }
+    } catch {
+      return rejectWithValue()
+    }
+  },
+)
+
 // reducers
 export const pollsSlice = createSlice({
   name: 'polls',
@@ -81,31 +109,26 @@ export const pollsSlice = createSlice({
           id: 'javascript',
           label: 'javascript',
           value: 390,
-          color: 'hsl(137, 70%, 50%)',
         },
         {
           id: 'elixir',
           label: 'elixir',
           value: 464,
-          color: 'hsl(270, 70%, 50%)',
         },
         {
           id: 'c',
           label: 'c',
           value: 483,
-          color: 'hsl(298, 70%, 50%)',
         },
         {
           id: 'rust',
           label: 'rust',
           value: 158,
-          color: 'hsl(191, 70%, 50%)',
         },
         {
           id: 'css',
           label: 'css',
           value: 435,
-          color: 'hsl(220, 70%, 50%)',
         },
       ],
       addresses: [
@@ -171,8 +194,15 @@ export const pollsSlice = createSlice({
     [createPoll.rejected]: () => console.log('rejected'),
     [fetchCurrentPoll.fulfilled]: (state, { payload }) =>
       (state.current = payload),
+
+    [fetchArchivedPolls.fulfilled]: (state, { payload }) => {
+      state.archivedList = payload.polls
+    },
+    [fetchPlannedPolls.fulfilled]: (state, { payload }) => {
+      state.planneddList = payload.polls
+    },
   },
 })
 
-export const {} = pollsSlice.actions
+// export const {} = pollsSlice.actions
 export default pollsSlice.reducer

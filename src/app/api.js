@@ -2,7 +2,6 @@
 
 import config from 'app/config'
 // import store from 'app/store'
-import { incrementByAmount } from 'features/counter/counterSlice'
 
 class Api {
   constructor(baseUri) {
@@ -43,8 +42,6 @@ class Api {
 
     const dispatch = options.dispatch
     // dispatch(incrementByAmount(100))
-
-    console.log(dispatch)
 
     const BASE_URI: string = baseUri || this.baseUri
 

@@ -35,9 +35,9 @@ const ChipWrapper = styled.div`
 
 const buttonTexts = {
   success: 'Выгрузить бюллетень',
-  pending: 'Отменть',
-  active: 'Отменить',
-  cancelled: 'Перезапустить',
+  pending: 'Отменить оповещение',
+  active: 'Отменить оповещение',
+  cancelled: 'Перезапустить оповещение',
 }
 
 const PollDrawer = ({ onClose }) => {
