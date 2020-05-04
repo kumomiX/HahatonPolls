@@ -33,34 +33,4 @@ export default css`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-
-  @font-face {
-    font-family: 'Futura PT';
-    font-weight: 300;
-    src: url(${FuturaPTLight}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Futura PT';
-    font-weight: 400;
-    src: url(${FuturaPTBook}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Futura PT';
-    font-weight: 600;
-    src: url(${FuturaPTDemi}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Futura PT';
-    font-weight: 700;
-    src: url(${FuturaPTMedium}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Futura PT';
-    font-weight: 800;
-    src: url(${FuturaPTBold}) format('woff');
-  }
 `

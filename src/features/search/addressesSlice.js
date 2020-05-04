@@ -7,7 +7,7 @@ export const searchAddresses = createAsyncThunk(
   async (q, { rejectWithValue, dispatch }) => {
     try {
       const response = await API.request(`/addresses?q=${q}`, { dispatch })
-      return response.data
+      return response
     } catch {
       return rejectWithValue()
     }
@@ -18,18 +18,7 @@ export const searchAddresses = createAsyncThunk(
 export const addressesSlice = createSlice({
   name: 'addresses',
   initialState: {
-    list: [
-      {
-        short_address: 'Козина 3а',
-        uuid: '12312313133',
-        location: [49.1340302, 55.814858],
-      },
-      {
-        short_address: 'Тандем',
-        uuid: '12312313',
-        location: [49.0850706, 55.8208565],
-      },
-    ],
+    list: [],
     selected: [],
   },
   reducers: {
@@ -38,11 +27,9 @@ export const addressesSlice = createSlice({
     },
   },
   extraReducers: {
-    [searchAddresses.pending]: () => console.log('pending'),
     [searchAddresses.fulfilled]: (state, { payload }) => {
       state.list = payload
     },
-    [searchAddresses.rejected]: () => console.log('rejected'),
   },
 })
 

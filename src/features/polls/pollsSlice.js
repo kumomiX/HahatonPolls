@@ -192,9 +192,9 @@ export const pollsSlice = createSlice({
       toast.message('Новый опрос был успешно создан')
     },
     [createPoll.rejected]: () => console.log('rejected'),
-    [fetchCurrentPoll.fulfilled]: (state, { payload }) =>
-      (state.current = payload),
-
+    [fetchCurrentPoll.fulfilled]: (state, { payload }) => {
+      state.current = payload
+    },
     [fetchArchivedPolls.fulfilled]: (state, { payload }) => {
       state.archivedList = payload.polls
     },

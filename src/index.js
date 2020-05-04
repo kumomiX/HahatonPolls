@@ -8,6 +8,8 @@ import * as serviceWorker from './serviceWorker'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 
+import 'index.css'
+
 import globalStyles from './theme/global'
 import defaultTheme from './theme/default'
 import muiTheme from './theme/mui'

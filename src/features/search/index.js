@@ -32,7 +32,7 @@ const customStyles = {
     fontFamily: state?.theme?.styledTheme?.fonts.primary,
     background: state?.theme?.styledTheme?.palette?.background.primary,
     overflow: 'hidden',
-    zIndex: 10,
+    zIndex: 100,
   }),
   input: (styles) => ({ ...styles }),
   placeholder: (styles) => ({ ...styles }),
