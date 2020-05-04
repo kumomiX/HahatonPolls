@@ -23,6 +23,7 @@ const Mark = styled.div`
 const CustomMap = ({ style = {}, ...props }) => {
   const addresses = useSelector(({ addresses }) => addresses.list)
   const firstAddress = addresses?.[0]
+  const focusedOption = useSelector(({ addresses }) => addresses.focusedOption)
 
   const selectedAddresses = useSelector(({ addresses }) => addresses.selected)
 
@@ -34,17 +35,17 @@ const CustomMap = ({ style = {}, ...props }) => {
       pitch={[33]}
       attributionControl={false}
       dragRotate={false}
-      center={firstAddress?.location}
-      zoom={[12]}
+      center={focusedOption?.location || firstAddress?.location}
+      // zoom={[12]}
       {...props}
     >
-      {firstAddress && (
-        <Marker coordinates={firstAddress.location}>
+      {focusedOption && (
+        <Marker coordinates={focusedOption.location}>
           <Mark color="primary" />
         </Marker>
       )}
       {selectedAddresses.map((a) => (
-        <Marker coordinates={a.location}>
+        <Marker key={a.uuid} coordinates={a.location}>
           <Mark />
         </Marker>
       ))}

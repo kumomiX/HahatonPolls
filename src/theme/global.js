@@ -1,11 +1,5 @@
 import { css } from 'styled-components'
 
-import FuturaPTLight from 'assets/fonts/FuturaPT-Light.woff'
-import FuturaPTBook from 'assets/fonts/FuturaPT-Book.woff'
-import FuturaPTDemi from 'assets/fonts/FuturaPT-Demi.woff'
-import FuturaPTMedium from 'assets/fonts/FuturaPT-Medium.woff'
-import FuturaPTBold from 'assets/fonts/FuturaPT-Bold.woff'
-
 export default css`
   *,
   *::before,

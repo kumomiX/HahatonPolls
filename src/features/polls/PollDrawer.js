@@ -84,6 +84,7 @@ const PollDrawer = ({ onClose }) => {
           >
             {formatDate(poll?.start_date)} - {formatDate(poll?.end_date)}
           </Typography>
+
           <Typography color="primary" variant="h5">
             «{poll.text}»
           </Typography>
@@ -120,12 +121,14 @@ const PollDrawer = ({ onClose }) => {
         <ArrowBack />
       </IconButton>
 
-      <Button
-        onClick={handleActionButtonClick}
-        style={{ position: 'absolute', right: '2rem', top: '1rem' }}
-      >
-        {buttonTexts[poll?.type]}
-      </Button>
+      {poll && (
+        <Button
+          onClick={handleActionButtonClick}
+          style={{ position: 'absolute', right: '2rem', top: '1rem' }}
+        >
+          {buttonTexts[poll?.type]}
+        </Button>
+      )}
     </Drawer>
   )
 }

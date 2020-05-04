@@ -1,7 +1,11 @@
-import React, { useCallback } from 'react'
-import Select from 'react-select/async'
+import React, { useEffect, useCallback } from 'react'
+import Select from './Select'
 import { useTheme } from 'styled-components'
-import { searchAddresses, selectAddresses } from './addressesSlice'
+import {
+  searchAddresses,
+  selectAddresses,
+  setFocusedOption,
+} from './addressesSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const customStyles = {
@@ -47,24 +51,37 @@ const Search = ({ style = {}, ...props }) => {
   const dispatch = useDispatch()
   const addresses = useSelector(({ addresses }) => addresses.list)
 
-  const getOptions = useCallback(
-    async (q) => {
-      await dispatch(searchAddresses(q))
-      return mapAddresses(addresses)
-    },
-    [addresses, dispatch],
-  )
+  // const getOptions = useCallback(
+  //   async (q) => {
+  //     await dispatch(searchAddresses(q))
+  //     return mapAddresses(addresses)
+  //   },
+  //   [addresses, dispatch],
+  // )
 
   const selectedAddresses = useSelector(({ addresses }) => addresses.selected)
-  const handleChange = (newSelected) =>
+  const handleChange = (newSelected, { action }) => {
     dispatch(selectAddresses({ addresses: newSelected }))
+  }
+
+  const onFocusedOptionChanged = useCallback(
+    (option) => {
+      dispatch(setFocusedOption(option))
+    },
+    [dispatch],
+  )
+
+  useEffect(() => {
+    dispatch(searchAddresses(''))
+  }, [dispatch])
 
   return (
     <Select
       cacheOptions
       defaultOptions
-      loadOptions={getOptions}
+      // loadOptions={getOptions}
       isMulti
+      options={mapAddresses(addresses)}
       styles={customStyles}
       theme={(selectTheme) => ({
         ...selectTheme,
@@ -79,6 +96,7 @@ const Search = ({ style = {}, ...props }) => {
       })}
       value={mapAddresses(selectedAddresses)}
       onChange={handleChange}
+      onFocusedOptionChanged={onFocusedOptionChanged}
       {...props}
     />
   )

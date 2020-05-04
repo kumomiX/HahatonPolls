@@ -22,7 +22,7 @@ export const fetchCurrentPoll = createAsyncThunk(
   'polls/fetchCurrentPoll',
   async ({ uuid }, { rejectWithValue, dispatch }) => {
     try {
-      const poll = await API.request('/polls', {
+      const poll = await API.request(`/polls/${uuid}`, {
         dispatch,
       })
       return { poll }
@@ -97,94 +97,7 @@ export const pollsSlice = createSlice({
         uuid: 4,
       },
     ],
-    current: {
-      type: 'success',
-      text:
-        'Организация кворумов - Добрый день! 10.06.20 и 15.06.20 с 9 до 12 и с 18 до 20 каждая квартира сможет проголосовать. Вся информация по голосованию уже доступна в общедомовом чате. После сигнала назовите удобную дату и время для заполнения бюллетеня',
-      start_date: '2017-05-24T10:30',
-      end_date: '2017-05-24T11:30',
-      uuid: 3,
-      data: [
-        {
-          id: 'javascript',
-          label: 'javascript',
-          value: 390,
-        },
-        {
-          id: 'elixir',
-          label: 'elixir',
-          value: 464,
-        },
-        {
-          id: 'c',
-          label: 'c',
-          value: 483,
-        },
-        {
-          id: 'rust',
-          label: 'rust',
-          value: 158,
-        },
-        {
-          id: 'css',
-          label: 'css',
-          value: 435,
-        },
-      ],
-      addresses: [
-        {
-          short_address: 'Козина 3а',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-        {
-          short_address: 'Тандем',
-        },
-      ],
-    },
+    current: null,
   },
   extraReducers: {
     [createPoll.pending]: () => console.log('pending'),

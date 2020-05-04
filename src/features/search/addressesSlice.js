@@ -20,18 +20,30 @@ export const addressesSlice = createSlice({
   initialState: {
     list: [],
     selected: [],
+    focusedOption: null,
   },
   reducers: {
     selectAddresses: (state, { payload }) => {
       state.selected = payload.addresses || []
     },
+    setFocusedOption: (state, { payload }) => {
+      state.focusedOption = payload
+    },
   },
   extraReducers: {
     [searchAddresses.fulfilled]: (state, { payload }) => {
-      state.list = payload
+      const normalized = payload.map((address) => {
+        let [a, b] = address.location
+
+        ;[a, b] = [b, a]
+
+        return { ...address, location: [a, b] }
+      })
+      state.list = normalized
+      state.focusedOption = normalized[0]
     },
   },
 })
 
-export const { selectAddresses } = addressesSlice.actions
+export const { selectAddresses, setFocusedOption } = addressesSlice.actions
 export default addressesSlice.reducer
